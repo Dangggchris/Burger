@@ -4,12 +4,8 @@ var router = express.Router();
 // Import the model (burger.js) to use its database functions.
 var burger = require("../models/burger.js");
 
-router.get('/', function (req, res) {
-    res.redirect('/index');
-  });
-
 // Create all our routes and set up logic within those routes where required.
-router.get("/index", function(req, res) {
+router.get("/", function(req, res) {
   burger.all(function(data) {
     var hbsObject = {
       burgers: data
@@ -22,14 +18,14 @@ router.get("/index", function(req, res) {
 router.post("/burger/new", function(req, res) {
   burger.insert(req.body.burger_name, function() {
     console.log(req.body);
-    res.redirect('/index');
+    res.redirect('/');
   });
 });
 
 router.post('/burger/eat/:id', function (req, res) {
     burger.update(req.params.id, function() {
         console.log(req.params.id);
-      res.redirect('/index');
+      res.redirect('/');
     });
 });
 
