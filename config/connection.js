@@ -9,7 +9,7 @@ else {
     host: "localhost",
     port: 3306,
     user: "root",
-    password: process.env.MYSQL_KEY,
+    password: "Rkenshin1991",
     database: "burger_db"
   });
 }
